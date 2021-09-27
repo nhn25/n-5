@@ -23,7 +23,7 @@ ctrlHome.rutaPost = async (req, res) => {
     const user = new User( usuario);
     await user.save() 
 
-    res.json({msg: 'alumno creado correctamente'});
+    res.json({msg: 'usuario creado correctamente'});
 }
 
 
