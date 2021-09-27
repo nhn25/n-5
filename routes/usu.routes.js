@@ -7,7 +7,6 @@ const {
 //  Ruta que devuelve todos los usuarios
 
 router.get('/vista', rutaVista)
-router.get('/:id', rutaGet)
 
 
 
