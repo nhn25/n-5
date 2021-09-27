@@ -1,0 +1,45 @@
+npm install –save jsonwebtoken
+
+Generación del Token
+ya con la dependencia instalada podemos crear el token de la siguiente manera:
+
+var jwt = require('jsonwebtoken')
+
+function generateToken(user) {
+  var u = {
+   username: user.username,
+   id: user.id
+  }
+  return token = jwt.sign(u, ‘password’, {
+     expiresIn: 60 * 60 * 24 // expires in 24 hours
+  })
+}
+
+Validación del token
+Hasta este punto solo hemos visto la parte de la generación del Token, pero falta la segunda parte, en donde tenemos que validar que el Token que el cliente nos manda, es válido.
+
+Para validar el Token podemos utilizar un Middleware de Express que valide de forma automática todas las URL que inicien con /secure. El middleware se ve de la siguiente manera:
+
+router.use('/secure',function(req, res, next) {
+  var token = req.headers['authorization']
+  if (!token) {
+    res.status(401).send({
+      ok: false,
+      message: 'Toket inválido'
+    })
+  }
+
+  token = token.replace('Bearer ', '')
+
+  jwt.verify(token, ‘password’, function(err, token) {
+    if (err) {
+      return res.status(401).send({
+        ok: false,
+        message: 'Toket inválido'
+      });
+    } else {
+      req.token = token
+      next()
+    }
+  });
+});
