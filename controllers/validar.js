@@ -11,8 +11,8 @@ app.post(
     }
 
     User.create({
-      username: req.body.username,
-      password: req.body.password,
+      username: req.check.username,
+      password: req.check.password,
     }).then(user => res.json(user));
   },
 );
