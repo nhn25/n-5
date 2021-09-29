@@ -1,0 +1,12 @@
+{
+
+    "registro usuario": {
+        "username": "paco",
+
+        "email": "paco.lol27@gmail.com",
+
+        "password": "manchester-city10",
+
+        "rol": "colaborador"
+
+    }}
