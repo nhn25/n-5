@@ -11,12 +11,12 @@ const UserSchema = new Schema({
 
         rol: {type:String, required: true},
 
-    }})
+    }});
 
-UserSchema.method.toJSON = function () {
-    const { __v, _id, password, ...usuario } = this.toObject();
-    usuario.nid = _id;
-    return usuario;
-}
+  UserSchema.methods.toJSON = function () {
+        const { __v, _id, password, ...usuario } = this.toObject();
+        usuario.uid = _id;
+        return usuario;
+    };
 
 module.exports = model('usuario', UserSchema);

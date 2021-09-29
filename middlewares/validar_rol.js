@@ -1,7 +1,7 @@
 const { response } = require('express');
 //const User = require('../models/User');
 
-const verficarAdmin = (req, res = response, next) => {
+const verificar_Admin = (req, res = response, next) => {
     const {role} = req.usuario;
     
 
@@ -17,5 +17,5 @@ const verficarAdmin = (req, res = response, next) => {
 };
 
 module.exports = {
-    verficarAdmin
+    verificar_Admin
 }
