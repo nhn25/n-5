@@ -1,4 +1,4 @@
-const ctrlHome = {};
+const ctrlPost = {};
 const User = require('../models/usuario');
 const {crear_jwt} = require('../helpers/crear_jwt')
 
@@ -30,7 +30,7 @@ ctrlPost.rutaLogin = async (req, res) => {
 
     //Si lo encuentra
 
-    const token = await generar_jwt(user.id); 
+    const token = await crear_jwt(user.id); 
     
     res.json({
         token

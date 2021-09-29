@@ -1,4 +1,4 @@
-const ctrlHome = {};
+const ctrlGet = {};
 const User = require('../models/usuario');
 
 

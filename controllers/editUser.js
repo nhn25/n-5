@@ -1,4 +1,4 @@
-const ctrlHome = {};
+const ctrlEdit = {};
 const User = require('../models/usuario');
 
 ctrlHome.rutaPut = async (req, res) => {

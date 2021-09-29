@@ -1,7 +1,7 @@
 const ctrlHome = {};
 const User = require('../models/usuario');
 
-ctrlHome.rutaDelete = async (req, res) => {
+ctrlDelete.rutaDelete = async (req, res) => {
     const  id = req.params.id;
     
     try {
@@ -17,7 +17,7 @@ ctrlHome.rutaDelete = async (req, res) => {
 }
 
 // Cambiar el estado activo de un usuario (Eliminación lógica)
-ctrlHome.deleteUser = async (req, res) => {
+ctrlDelete.deleteUser = async (req, res) => {
     const { id }  = req.body
     const user = await User.findByIdAndUpdate(id, { activo: false }, { new: true });
 
