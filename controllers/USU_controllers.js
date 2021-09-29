@@ -1,11 +1,11 @@
 const ctrlUSU = {};
 const {crear_jwt} = require('../helpers/crear_jwt');
-const usuario = require('../models/usuario');
+const User = require('../models/usuario');
 const { request, response } = require('express');
 
 ctrlUSU.rutaPost = async (req = request, res = response) => {
-    const usuario = req.body;
-    const user = new user( usuario);
+    const {username, email,password,rol} = req.body;
+    const user = new  User(username, email,password,rol);
     await user.save() 
 
     res.json({msg: 'usuario creado correctamente'});

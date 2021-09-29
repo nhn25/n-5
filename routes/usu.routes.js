@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const {validar_jwt} = require('../middlewares/validar_jwt')
 const {verificar_Admin} = require('../middlewares/validar_rol')
-const { body } = require('express-validator');
+const { body, check } = require('express-validator');
 const {validar_campos} = require ('../helpers/validar_campos')
 const rol = require('../models/rol')
 
@@ -15,17 +15,19 @@ const {
 router.get('/get-user', rutaGet)
 
 router.post('/create-user',
-body('username','El Email es incorrecto').isEmail(),
+body('username','El usuario es incorrecto')
+.not()
+.isEmpty(),
+body('email','El Email es incorrecto').isEmail(),
 body('password','La contrase debe contener 6 caracteres')
 .isLength({min: 6})
 .not()
 .isEmpty(),
-body('role', 'El rol no es valido')
-
-.custom(),
-validar_campos,
-validar_jwt,
-verificar_Admin, rutaPost)
+body('rol', 'El rol no es valido')
+.not()
+.isEmpty(),
+//validar_campos,
+rutaPost)
 
 router.post('/login-user', rutaLogin)
 
@@ -35,7 +37,8 @@ router.put('/edit-user/:id',
 body('username','El Email es incorrecto').isEmail(),
 body('password','La contrase debe contener 6 caracteres').isLength({min: 6}),
 body('role', 'El rol no es valido').isIn('ADMIN'),
-validar_campos, rutaPut)
+//validar_campos, 
+rutaPut)
 
 
 router.delete('/delete-user/:id',body('id','La id no es valida').isMongoId(), rutaDelete)

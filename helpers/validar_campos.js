@@ -1,4 +1,4 @@
-const { validationResult } = require("express-validator");
+/* const { validationResult } = require("express-validator");
 
 const validar_campos = async (req, res, next) => {
     const errores = await validationResult(req)
@@ -9,4 +9,4 @@ const validar_campos = async (req, res, next) => {
 };
 module.exports = {
     validar_campos
-}
+} */
